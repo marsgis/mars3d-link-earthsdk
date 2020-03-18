@@ -1,4 +1,4 @@
-# Mars3D兼容使用earthSDK使用示例
+# Mars3D兼容使用earthSDK平台示例
 
  我们认为，三维SDK平台不是零和游戏，欢迎结合各平台优点，来实现自己的项目需求。该仓库主要实现的就是使用[earthSDK平台](https://www.earthsdk.com)和 [Mars3D](http://cesium.marsgis.cn)结合来实现项目需求。
 
