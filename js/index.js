@@ -65,18 +65,21 @@ function initMap() {
             //     //infoBox: false,     //是否显示点击要素之后显示的信息  【也可以在config.json中配置】  
             //     //sceneMode: Cesium.SceneMode.SCENE2D,  
             // });
- 
+
             //构造地球 ,earthSDK方式
             earth = new XE.Earth('cesiumContainer');
 
+            var configData = data.map3d;
             if (data.serverURL)
-                data.map3d.serverURL = data.serverURL
+                configData.serverURL = data.serverURL
 
             // 通过earth.czm.viewer获得viewer
             viewer = earth.czm.viewer;
-            viewer.mars = new mars3d.ViewerEx(viewer, data.map3d);
- 
-            
+            viewer.mars = new mars3d.ViewerEx(viewer, configData);
+            if (configData && configData.terrain && configData.terrain.visible)
+                viewer.mars.updateTerrainProvider(configData.terrain.visible);
+
+
             //如果有xyz传参，进行定位 
             if (haoutil.isutil.isNotNull(request.x)
                 && haoutil.isutil.isNotNull(request.y)) {
@@ -154,8 +157,8 @@ function initWork(viewer) {
 
 
     // 禁用默认的实体双击动作。
-    viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
-    viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
+    // viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
+    // viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
     //鼠标滚轮放大的步长参数
     viewer.scene.screenSpaceCameraController._zoomFactor = 1.5;
