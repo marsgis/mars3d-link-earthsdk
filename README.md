@@ -9,7 +9,7 @@
 
 
 ## earthSDK整理及修改说明
-1. 将earthSDK的`XbsjCesium`和`XbsjEarth`等目录拷贝到 `lib\cesiumjs\`目录下；
+1. 在[earthSDK官网](https://www.earthsdk.com)下载最新类库，将earthSDK的`XbsjCesium`和`XbsjEarth`等目录拷贝到 `lib\cesiumjs\`目录下；
 	
 2. 修改lib\cesiumjs\XbsjEarth\XbsjEarth.js文件的`function ready()`方法，
 	将`loadCesium().then(loadXbsjCesium).then(loadViewerCesiumNavigationMixin)`代码删除，因为在`lib\include-lib.js`中配置加载,修改后代码为；
