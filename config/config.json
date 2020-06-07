@@ -85,16 +85,6 @@
             }, 
             {
                 "pid": 10,
-                "name": "天地图地形",
-                "icon": "img/basemaps/tdt_ter.png",
-                "type": "group",
-                "layers": [
-                    { "name": "底图", "type": "www_tdt", "layer": "ter_d", "key": ["313cd4b28ed520472e8b43de00b2de56" ] },
-                    { "name": "注记", "type": "www_tdt", "layer": "ter_z", "key": [  "83b36ded6b43b9bc81fbf617c40b83b5" ] }
-                ]               
-            }, 
-            {
-                "pid": 10,
                 "name": "OSM地图",
                 "type": "xyz",
                 "icon": "img/basemaps/osm.png",
@@ -107,6 +97,10 @@
                 "type": "xyz",
                 "icon": "img/basemaps/mapboxSatellite.png",
                 "url": "http://data.marsgis.cn/maptile/wgs3857img/{z}/{x}/{y}.jpg", 
+                "minimumLevel": 1,
+                "maximumLevel": 18,
+                "minimumTerrainLevel": 1,
+                "maximumTerrainLevel": 18,
                 "rectangle": { "xmin": -180, "xmax": 180, "ymin": -85, "ymax": 85 }
             },
             {
@@ -114,7 +108,7 @@
                 "name": "单张图片",
                 "icon": "img/basemaps/offline.png",
                 "type": "image",
-                "url": "img/world/world.jpg" 
+                "url": "img/tietu/world.jpg" 
             }   
         ],
         "operationallayers": [
@@ -804,6 +798,8 @@
                 "type": "3dtiles",
                 "name": "合肥市区",
                 "url": "$serverURL$/3dtiles/jzw-hefei/tileset.json", 
+                "maximumScreenSpaceError": 3,
+                "maximumMemoryUsage": 1024,
                 "center": {
                     "y": 31.805004,
                     "x": 117.222617,
@@ -824,6 +820,8 @@
                 "type": "3dtiles",
                 "name": "上海市区",
                 "url": "$serverURL$/3dtiles/jzw-shanghai/tileset.json",
+                "maximumScreenSpaceError": 3,
+                "maximumMemoryUsage": 1024,
                 "style":{
                     "color": {
                         "conditions": [
@@ -880,7 +878,8 @@
                 "name":"建筑",
                 "type":"3dtiles",
                 "url":"$serverURL$/3dtiles/bim-xuexiao/jz/tileset.json",
-                "maximumScreenSpaceError": 16,
+                "maximumScreenSpaceError": 16, 
+                "maximumMemoryUsage": 1024,
                 "scenetree": "scenetree.json",   
                 "showClickFeature":true, 
                 "popup":"all",          
@@ -892,7 +891,8 @@
                 "name":"机电",
                 "type":"3dtiles",
                 "url":"$serverURL$/3dtiles/bim-xuexiao/jd/tileset.json",
-                "maximumScreenSpaceError": 16,
+                "maximumScreenSpaceError": 16, 
+                "maximumMemoryUsage": 1024,
                 "scenetree": "scenetree.json",   
                 "showClickFeature":true, 
                 "popup":"all",          
@@ -911,20 +911,39 @@
                 "id": 202013,
                 "pid": 2020,
                 "type": "3dtiles",
-                "name": "地下管网",
-                "url": "$serverURL$/3dtiles/max-piping2/tileset.json",
-                "offset": { "x": 117.220108, "y": 31.834937, "z": 20 },
-                "center": { "y": 31.833005, "x": 117.220565, "z": 311.9, "heading": 4.7, "pitch": -57.4, "roll": 0 },
+                "name": "地下管网", 
+                "url": "$serverURL$/3dtiles/max-piping-hf/tileset.json",
+                "maximumScreenSpaceError": 2,
+                "maximumMemoryUsage": 1024,
+                "offset": { "x": 117.215457, "y": 31.843363, "z": 5, "transform": true, "heading": 23.3 },
+                "center":{"y":31.840525,"x":117.217024,"z":495.12,"heading":360,"pitch":-59.3,"roll":360},
+                "showClickFeature": true,
+                "popup": "all",
                 "msg": "演示数据，地下数据拖动时会在地面漂移"
             },
             {
                 "id": 202012,
                 "pid": 2020,
-                "type": "3dtiles",
-                "name": "油田联合站",
-                "url": "$serverURL$/3dtiles/max-ytlhz/tileset.json",
-                "offset": { "z": 2.5 },
-                "center": { "y": 40.895092, "x": 121.918679, "z": 397.9, "heading": 64, "pitch": -41.4, "roll": 0.2 }
+                "type": "3dtiles", 
+                "name": "石化工厂",
+                "url": "$serverURL$/3dtiles/max-shihua/tileset.json",
+                "maximumScreenSpaceError": 1, 
+                "offset": {
+                    "x": 117.077158,
+                    "y": 31.659116,
+                    "z": 93,
+                    "transform": true
+                },
+                "center": {
+                    "y": 31.654436,
+                    "x": 117.083883,
+                    "z": 758.53,
+                    "heading": 316.4,
+                    "pitch": -50.1,
+                    "roll": 359.8
+                },
+                "showClickFeature": true,
+                "popup": "all"
             },
             {
                 "id": 202030,
@@ -937,7 +956,7 @@
                 "type": "gltf",
                 "name": "闸门",
                 "url": "http://data.marsgis.cn/gltf/mars/zhamen.glb",
-                "position": { "x": 121.479807, "y": 29.791276, "z": 2.7},
+                "position": { "x": 121.479807, "y": 29.791276, "z": 2.7}, 
                 "style":{ "heading": 104  },
                 "center": { "y": 29.791537, "x": 121.479881, "z": 11.1, "heading": 194.1, "pitch": -11, "roll": 360 }
             },
@@ -947,10 +966,12 @@
                 "type": "3dtiles",
                 "name": "整体",
                 "url": "$serverURL$/3dtiles/max-fsdzm/tileset.json",
+                "maximumScreenSpaceError": 1,
+                "maximumMemoryUsage": 1024,
                 "offset": { "z": 3 },
                 "center": { "y": 29.792675, "x": 121.480207, "z": 190.8, "heading": 196.1, "pitch": -49, "roll": 359.9 }
             },
-
+         
             {
                 "id": 2030,
                 "pid": 20,
@@ -971,6 +992,28 @@
                 "offset": { "z": 3 },
                 "center": {"y":28.440864,"x":119.486477,"z":588.23,"heading":268.6,"pitch":-37.8,"roll":359.8}
             }, 
+            {
+                "pid": 2030,
+                "type": "geojson",
+                "name": "文庙-单体化",
+                "url": " http://data.marsgis.cn/file/geojson/draw-dth-wm.json",
+                "symbol": {
+                    "styleOptions": {
+                        "clampToGround":true
+                    }
+                },
+                "dth":{
+                    "buffer": 3,
+                    "color": "#ffff00", 
+                    "opacity": 0.5
+                },
+                "popup": [
+                    { "field": "name", "name": "房屋名称" },
+                    { "field": "jznf", "name": "建造年份" },
+                    { "field": "ssdw", "name": "所属单位" },
+                    { "field": "remark", "name": "备注信息" }
+                ]
+            },
             { 
                 "id": 203012,
                 "pid": 2030,
@@ -989,8 +1032,9 @@
                 "pid": 2030,
                 "type": "3dtiles",
                 "name": "几栋楼",
-                "url": "$serverURL$/3dtiles/qx-shuiwu/tileset.json",
-                "maximumScreenSpaceError": 2,
+                "url": "$serverURL$/3dtiles/qx-shuiwu/tileset.json", 
+                "maximumScreenSpaceError": 1,
+                "maximumMemoryUsage": 1024,
                 "offset": { "z": -100 },
                 "center": {
                     "y": 36.534035,

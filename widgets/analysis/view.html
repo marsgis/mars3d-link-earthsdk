@@ -194,24 +194,31 @@
                 提示:请首先单击 “绘制区域” 按钮，再在图上绘制分析区域。
             </div>
 
-            <div class="rowview clearfix">
-                <span>基准面高:</span>
-                <input id="txt_flfx_Height" type="number" value="0" step="1" class="form-control" style="width: 100px;"
-                    title="计量单位:米" />
-                <input id='btn_flfx_selHeight' type="button" class="btn btn-primary" value="点选高度" />
-            </div>
-
-            <div class="rowview clearfix">
-                <span>围墙高度:</span>
-                <input id="txt_flfx_MaxHeight" type="number" value="0" step="1" class="form-control"
-                    style="width: 100px;" title="计量单位:米" />
-            </div>
 
             <div class="rowview clearfix center">
                 <button id='btn_flfx_draw' type="button" class="btn btn-primary">
                     <i class="fa fa-edit"></i>
                     绘制分析区域
                 </button>
+            </div>
+            <div class="rowview clearfix">
+                <span>基准面高:</span>
+                <input id="txt_flfx_Height" type="number" value="0" step="0.1" class="form-control" style="width: 100px;"
+                    title="计量单位:米" />
+                <input id='btn_flfx_selHeight' type="button" class="btn btn-primary" value="点选高度" />
+            </div>
+
+            <div class="rowview clearfix">
+                <span>围墙底高:</span>
+                <input id="txt_flfx_MinHeight" type="number" value="0" step="0.1" class="form-control"
+                    style="width: 100px;" title="计量单位:米" />
+                    （可选）
+            </div>
+            <div class="rowview clearfix">
+                <span>围墙顶高:</span>
+                <input id="txt_flfx_MaxHeight" type="number" value="0" step="0.1" class="form-control"
+                    style="width: 100px;" title="计量单位:米" />
+                    （可选）
             </div>
         </div>
 
