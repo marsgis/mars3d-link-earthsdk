@@ -94,15 +94,38 @@
             {
                 "pid": 10,
                 "name": "离线地图",
-                "type": "xyz",
-                "icon": "img/basemaps/mapboxSatellite.png",
-                "url": "http://data.marsgis.cn/maptile/wgs3857img/{z}/{x}/{y}.jpg", 
-                "minimumLevel": 1,
-                "maximumLevel": 18,
-                "minimumTerrainLevel": 1,
-                "maximumTerrainLevel": 18,
-                "rectangle": { "xmin": -180, "xmax": 180, "ymin": -85, "ymax": 85 }
-            },
+                "type": "group",
+                "icon": "img/basemaps/google_img.png",
+                "layers": [
+                    {        
+                        "name": "全球",                        
+                        "type": "xyz",
+                        "url": "http://data.marsgis.cn/maptile/wgs3857img/{z}/{x}/{y}.jpg", 
+                        "minimumLevel": 0, 
+                        "maximumLevel": 9
+                    },
+                    {
+                        "name": "中国",
+                        "type": "xyz", 
+                        "url": "http://data.marsgis.cn/maptile/wgs3857img/{z}/{x}/{y}.jpg", 
+                        "minimumTerrainLevel": 10,
+                        "minimumLevel": 10, 
+                        "maximumLevel": 12,
+                        "rectangle": { "xmin": 69.706929, "xmax": 136.560941, "ymin": 15.831038, "ymax": 52.558005 }
+                    },
+                    {
+                        "name": "具体项目(如合肥)",
+                        "type": "xyz", 
+                        "url": "http://data.marsgis.cn/maptile/wgs3857img/{z}/{x}/{y}.jpg", 
+                        "minimumTerrainLevel": 12,
+                        "minimumLevel": 12, 
+                        "maximumLevel": 18,
+                        "rectangle": { "xmin": 116.33236, "xmax": 118.183557, "ymin": 31.143784, "ymax": 32.565035 }
+                    }
+                ]
+            },     
+
+
             {
                 "pid": 10,
                 "name": "单张图片",
@@ -111,7 +134,15 @@
                 "url": "img/tietu/world.jpg" 
             }   
         ],
-        "operationallayers": [
+        "operationallayers": [ 
+            {
+                "name": "行政区划界线",
+                "type": "xyz", 
+                "url": "https://t{s}.tianditu.gov.cn/DataServer?T=ibo_w&x={x}&y={y}&l={z}&tk=56b81006f361f6406d0e940d2f89a39c",
+                "subdomains": "01234567",
+                "maximumLevel": 10,
+                "visible": true
+            }, 
             {
                 "pid": 10,
                 "name": "天地图注记",
@@ -384,6 +415,50 @@
             {
                 "pid": 3030,
                 "type": "geojson",
+                "name": "用地规划",
+                "url": "http://data.marsgis.cn/file/geojson/guihua.json",
+                "symbol": {
+                    "styleOptions": {
+                        "opacity": 0.6,
+                        "color": "#0000FF",
+                        "width": 3,
+                        "clampToGround": true
+                    },
+                    "styleField": "类型",
+                    "styleFieldOptions": {
+                        "一类居住用地": { "color": "#FFDF7F" },
+                        "二类居住用地": { "color": "#FFFF00" },
+                        "社区服务用地": { "color": "#FF6A38" },
+                        "幼托用地": { "color": "#FF6A38" },
+                        "商住混合用地": { "color": "#FF850A" },
+                        "行政办公用地": { "color": "#FF00FF" },
+                        "文化设施用地": { "color": "#FF00FF" },
+                        "小学用地": { "color": "#FF7FFF" },
+                        "初中用地": { "color": "#FF7FFF" },
+                        "体育场用地": { "color": "#00A57C" },
+                        "医院用地": { "color": "#A5527C" },
+                        "社会福利用地": { "color": "#FF7F9F" },
+                        "商业用地": { "color": "#FF0000" },
+                        "商务用地": { "color": "#7F0000" },
+                        "营业网点用地": { "color": "#FF7F7F" },
+                        "一类工业用地": { "color": "#A57C52" },
+                        "社会停车场用地": { "color": "#C0C0C0" },
+                        "通信用地": { "color": "#007CA5" },
+                        "排水用地": { "color": "#00BFFF" },
+                        "公园绿地": { "color": "#00FF00" },
+                        "防护绿地": { "color": "#007F00" },
+                        "河流水域": { "color": "#7FFFFF" },
+                        "配建停车场": { "color": "#ffffff" },
+                        "道路用地": { "color": "#ffffff" }
+                    }
+                },
+                "popup": "{类型}", 
+                "visible": false,
+                "flyTo": true
+            },
+            {
+                "pid": 3030,
+                "type": "geojson",
                 "name": "建筑物面",
                 "url": "http://data.marsgis.cn/file/geojson/jzw.json",
                 "symbol": {
@@ -469,6 +544,53 @@
                 "visible": false,
                 "flyTo": true
             },
+            { 
+                "pid": 3030,
+                "type": "geojson",
+                "name": "西藏垭口",
+                "url": "http://data.marsgis.cn/file/geojson/xizangyakou.json",
+                "symbol": {
+                    "styleOptions": {
+                        "image": "img/marker/mark1.png",
+                        "scale": 1,
+                        "scaleByDistance": true,
+                        "scaleByDistance_far": 5000000,
+                        "scaleByDistance_farValue": 0.5,
+                        "scaleByDistance_near": 1000,
+                        "scaleByDistance_nearValue": 1,
+                        "label": {
+                            "text": "{NAME}",
+                            "font_size": 25,
+                            "color": "#ffff00",
+                            "font_family": "微软雅黑",
+                            "border": true,
+                            "border_color": "#000000",
+                            "pixelOffset": [0, -40  ],
+                            "scaleByDistance": true,
+                            "scaleByDistance_far": 1000000,
+                            "scaleByDistance_farValue": 0.5,
+                            "scaleByDistance_near": 1000,
+                            "scaleByDistance_nearValue": 1,
+                            "distanceDisplayCondition": true,
+                            "distanceDisplayCondition_far": 1000000,
+                            "distanceDisplayCondition_near": 0
+                        }
+                    }
+                },
+                "popup": [
+                    {
+                        "field": "NAME",
+                        "name": "名称"
+                    },
+                    {
+                        "type": "details",
+                        "calback": "showdetails",
+                        "field": "图片"
+                    }
+                ],
+                "visible": false,
+                "flyTo": true
+            }, 
             { 
                 "pid": 3030,
                 "type": "geojson",
@@ -773,7 +895,7 @@
                 "name": "风力发电机",
                 "url": "http://data.marsgis.cn/gltf/mars/fengche.gltf",
                 "position": { "x":  117.219071,"y": 31.828783, "z": 39.87},
-                "style":{   "scale": 50,  "heading": -93  },
+                "style":{ "scale": 50,  "heading": -93  },
                 "popup": "示例信息，这是一个风力发电机",
                 "center":{"y":31.821083,"x":117.21832,"z":832.64,"heading":2.3,"pitch":-39.2,"roll":0}
             },
@@ -883,7 +1005,8 @@
                 "scenetree": "scenetree.json",   
                 "showClickFeature":true, 
                 "popup":"all",          
-                "offset":{"x":117.21964,"y":31.833288,"z":53,"heading":1.9},
+                "offset":{"x":117.21964,"y":31.833288,"z":53},
+                "rotation": { "z": 1.9},
                 "center":{"y":31.832145,"x":117.219726,"z":197.57,"heading":358.9,"pitch":-46.3,"roll":360}
             },
             {
@@ -896,7 +1019,8 @@
                 "scenetree": "scenetree.json",   
                 "showClickFeature":true, 
                 "popup":"all",          
-                "offset":{"x":117.21964,"y":31.833288,"z":53,"heading":1.9},
+                "offset":{"x":117.21964,"y":31.833288,"z":53},
+                "rotation": { "z": 1.9},
                 "center":{"y":31.832145,"x":117.219726,"z":197.57,"heading":358.9,"pitch":-46.3,"roll":360}
             },
      
@@ -915,7 +1039,8 @@
                 "url": "$serverURL$/3dtiles/max-piping-hf/tileset.json",
                 "maximumScreenSpaceError": 2,
                 "maximumMemoryUsage": 1024,
-                "offset": { "x": 117.215457, "y": 31.843363, "z": 5, "transform": true, "heading": 23.3 },
+                "offset": { "x": 117.215457, "y": 31.843363, "z": 5, "transform": true},
+                "rotation": { "z":  23.3 },
                 "center":{"y":31.840525,"x":117.217024,"z":495.12,"heading":360,"pitch":-59.3,"roll":360},
                 "showClickFeature": true,
                 "popup": "all",
@@ -1002,6 +1127,7 @@
                         "clampToGround":true
                     }
                 },
+                "hasOpacity":false,
                 "dth":{
                     "buffer": 3,
                     "color": "#ffff00", 

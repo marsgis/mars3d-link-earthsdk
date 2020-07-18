@@ -25,10 +25,6 @@
                 "left": "auto",
                 "right": "10px"
             }          
-        },
-        {
-            "name": "放大缩小工具按钮",
-            "uri": "widgets/toolbtn-zoom/widget.js"
         }
     ],
     "widgets": [

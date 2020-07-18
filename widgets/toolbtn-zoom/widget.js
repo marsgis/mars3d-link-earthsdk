@@ -25,12 +25,12 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
         $(".compass").css({ "bottom": height + "px" });
 
         //工具按钮菜单事件 
-        var zoomIn = new mars3d.ZoomNavigation(viewer, true);
+        var zoomIn = new mars3d.ZoomNavigation(this.viewer, true);
         $("#btn-zommIn").click(function () {
             zoomIn.activate();
         });
 
-        var zoomOut = new mars3d.ZoomNavigation(viewer, false);
+        var zoomOut = new mars3d.ZoomNavigation(this.viewer, false);
         $("#btn-ZoomOut").click(function () {
             zoomOut.activate();
         });

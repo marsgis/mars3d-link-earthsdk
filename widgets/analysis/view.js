@@ -228,7 +228,7 @@ function initFLFX() {
     });
     $("#txt_flfx_MaxHeight").change(function () {
         var num = Number($(this).val());
-        if(num<measureObj.height){
+        if(num<thisWidget.measureObj.height){
             haoutil.msg("墙顶部高度不能低于基准面高"); 
             return
         }
@@ -236,7 +236,7 @@ function initFLFX() {
     });
     $("#txt_flfx_MinHeight").change(function () {
         var num = Number($(this).val());
-        if(num>measureObj.height){
+        if(num>thisWidget.measureObj.height){
             haoutil.msg("墙底部高度不能高于基准面高"); 
             return
         }
@@ -248,10 +248,10 @@ function initFLFX() {
 
 }
 
-function showFLFXHeightRg(measureObj) { 
-    $("#txt_flfx_Height").val(measureObj.height.toFixed(1)); 
-    $("#txt_flfx_MaxHeight").val(measureObj.maxHeight.toFixed(1));
-    $("#txt_flfx_MinHeight").val(measureObj.minHeight.toFixed(1));
+function showFLFXHeightRg() { 
+    $("#txt_flfx_Height").val(thisWidget.measureObj.height.toFixed(1)); 
+    $("#txt_flfx_MaxHeight").val(thisWidget.measureObj.maxHeight.toFixed(1));
+    $("#txt_flfx_MinHeight").val(thisWidget.measureObj.minHeight.toFixed(1));
 }
 
 
@@ -271,6 +271,10 @@ function initDXKW() {
     $('#bt_dxkw_draw').click(function () {
         thisWidget.startDrawDXKW();
     });
+    $('#bt_dxkw_draw_extent').click(function () {
+        thisWidget.startDrawDXKWExtent();
+    });
+    
 
     $("#txt_dxkw_clipHeight").change(function () {
         var nowValue = $(this).val();

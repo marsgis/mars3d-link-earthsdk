@@ -9,27 +9,8 @@
 
 
 ## earthSDK整理及修改说明
-1. 在[earthSDK官网](https://www.earthsdk.com)下载最新类库，将earthSDK的`XbsjCesium`和`XbsjEarth`等目录拷贝到 `lib\cesiumjs\`目录下；
-	
-2. 修改lib\cesiumjs\XbsjEarth\XbsjEarth.js文件的`function ready()`方法，
-	将`loadCesium().then(loadXbsjCesium).then(loadViewerCesiumNavigationMixin)`代码删除，因为在`lib\include-lib.js`中配置加载,修改后代码为；
-```javascript
-function ready() {
-    //调试模式下
-    if (false) {
-        return loadRxjs().then(function () {
-            return ready.isReady = true;
-        });
-    } else {
-        // 同时加载尽可能多的js包，已提升加载速度！
-        return _promise2.default.all([loadRxjs()]).then(function () {
-            return ready.isReady = true;
-        });
-    }
-}
-```
-
-3. 通过earthSDK构造后，使用 viewer.mars=new mars3d.ViewerEx 绑定mars3d的相关处理。
+1. 在[earthSDK官网](https://www.earthsdk.com)下载最新类库，将earthSDK的`XbsjCesium`和`XbsjEarth`等目录拷贝到 `lib\cesiumjs\`目录下；当前示例中地址使用的是earthsdk官方js。
+2. 通过earthSDK构造后，使用 viewer.mars=new mars3d.ViewerEx 绑定mars3d的相关处理。
 
 
 
