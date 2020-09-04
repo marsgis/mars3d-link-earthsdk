@@ -57,9 +57,12 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
     },
 
     enableControl: function (value) {
-        this.viewer.mars.popup.enable = value;
-        this.viewer.mars.tooltip.enable = value;
-        this.viewer.mars.contextmenu.enable = value;
+        if (this.viewer.mars.popup)
+            this.viewer.mars.popup.enable = value;
+        if (this.viewer.mars.tooltip)
+            this.viewer.mars.tooltip.enable = value;
+        if (this.viewer.mars.contextmenu)
+            this.viewer.mars.contextmenu.enable = value;
     },
 
     //=========日照分析========
@@ -150,6 +153,11 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
         this.lastViewField = thisViewField;
         this.arrKsyList.push(thisViewField);
     },
+    updateKsyDebugFrustum: function (debugFrustum) {
+        for (var i = 0, len = this.arrKsyList.length; i < len; i++) {
+            this.arrKsyList[i].debugFrustum = debugFrustum;
+        }
+    },
 
     //=========方量分析========
     createFLFX: function () {
@@ -201,7 +209,7 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
                 var positions = viewer.mars.draw.getPositions(entity);
                 viewer.mars.draw.deleteAll();
-                that.showDXKWClippingPlanes(positions,true);
+                that.showDXKWClippingPlanes(positions, true);
             }
         });
     },
@@ -222,7 +230,7 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
                 var positions = mars3d.draw.attr.rectangle.getOutlinePositions(entity, true);
                 viewer.mars.draw.deleteAll();
-                that.showDXKWClippingPlanes(positions,false);
+                that.showDXKWClippingPlanes(positions, false);
             }
         });
     },
@@ -263,7 +271,7 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
         });
 
         // marsgis扩展的地形开挖【存在问题：鼠标无法穿透地表，地下管网的popup无法展示】
-        if (has2) { 
+        if (has2) {
             this.TerrainClip = new mars3d.analysi.TerrainClip(viewer, {
                 positions: positions,
                 height: height,
@@ -345,7 +353,7 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
             },
             success: function (entity) { //绘制成功后回调  
                 var positions = that.viewer.mars.draw.getPositions(entity);
-                viewer.mars.draw.deleteAll()
+                that.viewer.mars.draw.deleteAll()
 
                 that.slope.add(positions, {
                     splitNum: splitNum  //splitNum插值分割的个数
@@ -361,19 +369,19 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
         this.enableControl(false);
 
-        viewer.mars.draw.startDraw({
+        this.viewer.mars.draw.startDraw({
             type: "point",
             style: {
                 color: "#007be6",
             },
             success: function (entity) { //绘制成功后回调
-                var positions = viewer.mars.draw.getPositions(entity);
+                var positions = that.viewer.mars.draw.getPositions(entity);
 
-                viewer.mars.draw.deleteAll();
+                that.viewer.mars.draw.deleteAll();
 
                 that.enableControl(true);
 
-                var tileset = mars3d.tileset.pick3DTileset(viewer, positions);//拾取绘制返回的模型
+                var tileset = mars3d.tileset.pick3DTileset(that.viewer, positions);//拾取绘制返回的模型
                 if (!tileset) {
                     haoutil.msg("请单击选择模型");
                     return;
@@ -382,6 +390,40 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
                 var radius = tileset.boundingSphere.radius / 2;
                 that.viewWindow.setClipDistanceRange(radius, tileset.name);
+            }
+        });
+    },
+    drawLinePQMX: function () {
+        var that = this;
+
+        if (this.clipTileset) {
+            this.clipTileset.clear();
+        }
+        viewer.mars.draw.startDraw({
+            type: 'polyline',
+            config: { maxPointNum: 2 },
+            style: {
+                color: '#007be6',
+                opacity: 0.8,
+                outline: false,
+            },
+            success: function (entity) { //绘制成功后回调 
+                var points = viewer.mars.draw.getPositions(entity);
+                viewer.mars.draw.deleteAll();
+
+                if (that.clipTileset) {
+                    that.clipTileset.clear();
+                }
+                else {
+                    var tileset = mars3d.tileset.pick3DTileset(viewer, points);//拾取绘制返回的模型
+                    if (!tileset) {
+                        haoutil.msg("请单击选择模型");
+                        return;
+                    }
+                    that.clipTileset = new mars3d.tiles.TilesClipPlan(tileset);
+                }
+
+                that.clipTileset.clipByPoints(points);
             }
         });
     },
@@ -459,14 +501,15 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
         var that = this;
         viewer.mars.draw.startDraw({
-            type: "polygon",
+            type: 'rectangle',
             style: {
-                color: "#007be6",
-                opacity: 0.5,
-                clampToGround: false
+                color: '#007be6',
+                opacity: 0.8,
+                outline: false,
+                // clampToGround: true
             },
             success: function (entity) { //绘制成功后回调
-                var positions = viewer.mars.draw.getPositions(entity);
+                var positions = mars3d.draw.attr.rectangle.getOutlinePositions(entity, true);
 
                 viewer.mars.draw.deleteAll();
                 var isAdd = that.addMxcjPoly(positions, clipOutSide)

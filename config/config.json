@@ -134,7 +134,7 @@
                 "url": "img/tietu/world.jpg" 
             }   
         ],
-        "operationallayers": [ 
+        "operationallayers": [
             {
                 "name": "行政区划界线",
                 "type": "xyz", 
@@ -237,6 +237,9 @@
                     "format": "image/png"
                 },
                 "showClickFeature": true,
+                "pickFeatureStyle": {
+                    "clampToGround": true
+                },
                 "center": { "y": 31.743214, "x": 117.277097, "z": 47197.7, "heading": 0.3, "pitch": -78.8, "roll": 360 },
                 "popup": "名称：{项目名称}<br />类型：{设施类型}<br />面积：{用地面积}亩<br />位置：{具体位置}",
                 "visible": false,
@@ -271,15 +274,15 @@
                 },
                 "showClickFeature": true,
                 "pickFeatureStyle": {
-                    "showTime": 5000, 
-                    "clampToGround": true,
+                    "showTime": 5000,
                     "fill": true,
                     "color": "#2deaf7",
                     "opacity": 0.6,
                     "outline": true,
                     "outlineWidth": 3,
                     "outlineColor": "#e000d9",
-                    "outlineOpacity": 1.0
+                    "outlineOpacity": 1.0, 
+                    "clampToGround": true
                 },
                 "center": { "y": 31.79513, "x": 117.236172, "z": 3784.6, "heading": 0.7, "pitch": -42.2, "roll": 0 },
                 "popup": "all",
@@ -336,6 +339,9 @@
                 "url": "http://data.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer",
                 "layers": "24",
                 "showClickFeature": true,
+                "pickFeatureStyle": {
+                    "clampToGround": true
+                },
                 "center": { "y": 31.814176, "x": 117.225362, "z": 5105.3, "heading": 359.2, "pitch": -83.1, "roll": 360 },
                 "popup": "all"
             },
@@ -347,6 +353,9 @@
                 "url": "http://data.marsgis.cn/arcgis/rest/services/mars/hefei/MapServer",
                 "layers": "35,36,37,39",
                 "showClickFeature": true,
+                "pickFeatureStyle": {
+                    "clampToGround": true
+                },
                 "center": { "y": 31.816951, "x": 117.22898, "z": 2916.7, "heading": 0.3, "pitch": -78.8, "roll": 0 },
                 "popup": "名称：{NAME}<br />层数：{floor}"
             },
@@ -365,7 +374,8 @@
                     "outline": true,
                     "outlineWidth": 3,
                     "outlineColor": "#e000d9",
-                    "outlineOpacity": 1.0
+                    "outlineOpacity": 1.0,
+                    "clampToGround": true
                 },
                 "center": { "y": 31.816951, "x": 117.22898, "z": 2916.7, "heading": 0.3, "pitch": -78.8, "roll": 0 },
                 "popup": [
@@ -392,7 +402,7 @@
                 "pid": 3040,
                 "type": "geojson-draw",
                 "name": "规划单元",
-                "url": "http://data.marsgis.cn/file/geojson/draw-cady.json", 
+                "url": "$serverURL$/file/geojson/draw-cady.json", 
                 "visible": false,
                 "flyTo": true
             }, 
@@ -401,7 +411,7 @@
                 "pid": 3040,
                 "type": "geojson-draw",
                 "name": "示例数据",
-                "url": "http://data.marsgis.cn/file/geojson/draw-demo.json",
+                "url": "$serverURL$/file/geojson/draw-demo.json",
                 "popup": "{draw_typename}", 
                 "visible": false,
                 "flyTo": true
@@ -416,7 +426,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "用地规划",
-                "url": "http://data.marsgis.cn/file/geojson/guihua.json",
+                "url": "$serverURL$/file/geojson/guihua.json",
                 "symbol": {
                     "styleOptions": {
                         "opacity": 0.6,
@@ -460,7 +470,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "建筑物面",
-                "url": "http://data.marsgis.cn/file/geojson/jzw.json",
+                "url": "$serverURL$/file/geojson/jzw.json",
                 "symbol": {
                     "styleOptions": {
                         "color": "#0d3685",
@@ -479,7 +489,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "安徽各市",
-                "url": "http://data.marsgis.cn/file/geojson/anhui.json",
+                "url": "$serverURL$/file/geojson/anhui.json",
                 "symbol": {
                     "styleOptions": {
                         "fill": true,
@@ -516,7 +526,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "省界线",
-                "url": "http://data.marsgis.cn/file/geojson/sheng-line.json",
+                "url": "$serverURL$/file/geojson/sheng-line.json",
                 "symbol": {
                     "styleOptions": {
                         "lineType": "solid",
@@ -548,7 +558,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "西藏垭口",
-                "url": "http://data.marsgis.cn/file/geojson/xizangyakou.json",
+                "url": "$serverURL$/file/geojson/xizangyakou.json",
                 "symbol": {
                     "styleOptions": {
                         "image": "img/marker/mark1.png",
@@ -595,7 +605,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "体育设施点",
-                "url": "http://data.marsgis.cn/file/geojson/hfty-point.json",
+                "url": "$serverURL$/file/geojson/hfty-point.json",
                 "symbol": {
                     "styleOptions": {
                         "image": "img/marker/mark1.png",
@@ -816,7 +826,7 @@
                 "pid": 3060,
                 "type": "czml",
                 "name": "汽车",
-                "url": "http://data.marsgis.cn/file/czml/car.czml", 
+                "url": "$serverURL$/file/czml/car.czml", 
                 "flyTo": true
             }, 
             {
@@ -824,7 +834,7 @@
                 "pid": 3060,
                 "type": "czml",
                 "name": "飞行编队",
-                "url": "http://data.marsgis.cn/file/czml/flight.czml",
+                "url": "$serverURL$/file/czml/flight.czml",
                 "popup": "all",
                 "flyTo": true
             },
@@ -833,7 +843,7 @@
                 "pid": 3060,
                 "type": "czml",
                 "name": "船舶编队",
-                "url": "http://data.marsgis.cn/file/czml/ship.czml",
+                "url": "$serverURL$/file/czml/ship.czml",
                 "popup": "all",
                 "flyTo": true
             },
@@ -847,14 +857,14 @@
                 "pid": 3050,
                 "type": "kml", 
                 "name": "海上安全警告",
-                "url": "http://data.marsgis.cn/file/kml/NAVWARN.kmz",
+                "url": "$serverURL$/file/kml/NAVWARN.kmz",
                 "popup": "all"
             },
             {
                 "pid": 3050,
                 "type": "kml", 
                 "name": "国境线",
-                "url": "http://data.marsgis.cn/file/kml/countryboundary.kml",
+                "url": "$serverURL$/file/kml/countryboundary.kml",
                 "symbol": {
                     "styleOptions": {
                         "color": "#FED976",
@@ -866,7 +876,7 @@
                 "pid": 3050,
                 "type": "kml", 
                 "name": "省界线",
-                "url": "http://data.marsgis.cn/file/kml/province.kml",
+                "url": "$serverURL$/file/kml/province.kml",
                 "symbol": {
                     "styleOptions": {
                         "color": "#00FF00",
@@ -893,9 +903,9 @@
                 "pid": 2010,
                 "type": "gltf",
                 "name": "风力发电机",
-                "url": "http://data.marsgis.cn/gltf/mars/fengche.gltf",
+                "url": "$serverURL$/gltf/mars/fengche.gltf",
                 "position": { "x":  117.219071,"y": 31.828783, "z": 39.87},
-                "style":{ "scale": 50,  "heading": -93  },
+                "style":{   "scale": 50,  "heading": -93  },
                 "popup": "示例信息，这是一个风力发电机",
                 "center":{"y":31.821083,"x":117.21832,"z":832.64,"heading":2.3,"pitch":-39.2,"roll":0}
             },
@@ -903,7 +913,7 @@
                 "pid": 2010,
                 "type": "gltf",
                 "name": "起重车",
-                "url": "http://data.marsgis.cn/gltf/mars/qzcar/GKZY_anim.gltf",                
+                "url": "$serverURL$/gltf/mars/qzcar/GKZY_anim.gltf",                
                 "position": { "x": 117.217458,"y":31.815349, "z": 35.03},
                 "style":{"scale": 2,   "heading": -95, "clampToGround": true} ,
                 "center":{"y":31.815363,"x":117.215958,"z":107.35,"heading":90.7,"pitch":-26.1,"roll":0.2}
@@ -985,7 +995,9 @@
                 "offset":{"x":117.096906,"y":31.851564,"z":45,"heading":342.5},
                 "center":{"y":31.849357,"x":117.099194,"z":306.2,"heading":327.1,"pitch":-30.9,"roll":359.9},
                 "showClickFeature":true,
-                "clickFeatureColor":"#00FF00",
+                "pickFeatureStyle": {
+                    "color":"#00FF00"
+                },
                 "popup":"all"
             },
             {
@@ -1080,7 +1092,7 @@
                 "pid": 202030,
                 "type": "gltf",
                 "name": "闸门",
-                "url": "http://data.marsgis.cn/gltf/mars/zhamen.glb",
+                "url": "$serverURL$/gltf/mars/zhamen.glb",
                 "position": { "x": 121.479807, "y": 29.791276, "z": 2.7}, 
                 "style":{ "heading": 104  },
                 "center": { "y": 29.791537, "x": 121.479881, "z": 11.1, "heading": 194.1, "pitch": -11, "roll": 360 }
@@ -1121,7 +1133,7 @@
                 "pid": 2030,
                 "type": "geojson",
                 "name": "文庙-单体化",
-                "url": " http://data.marsgis.cn/file/geojson/draw-dth-wm.json",
+                "url": " $serverURL$/file/geojson/draw-dth-wm.json",
                 "symbol": {
                     "styleOptions": {
                         "clampToGround":true
@@ -1182,8 +1194,12 @@
                 "dynamicScreenSpaceError": true,
                 "cullWithChildrenBounds": false,
                 "luminanceAtZenith": 0.6, 
+                "skipLevelOfDetail":true,
+                "preferLeaves":true,
                 "offset": { "z": -4 },
-                "center": { "y": 40.414276, "x": 115.458072, "z": 1235, "heading": 194.6, "pitch": -48.8, "roll": 359.9 }
+                "center": { "y": 40.414276, "x": 115.458072, "z": 1235, "heading": 194.6, "pitch": -48.8, "roll": 359.9 }, 
+                "visible":false, 
+                "flyTo":false
             }
         ]
     }

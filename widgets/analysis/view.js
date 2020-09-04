@@ -183,6 +183,12 @@ function initKSY() {
         thisWidget.getLastKSY().distance = value;
     });
 
+    
+    $("#chk_ksy_DebugFrustum").change(function () {
+        var debugFrustum = $(this).is(':checked'); 
+        thisWidget.updateKsyDebugFrustum(debugFrustum);
+    });
+
     $('#btn_ksy_add').click(function () {
         var horizontalAngle = Number($("#txt_ksy_horizontalAngle").val());
         var verticalAngle = Number($("#txt_ksy_verticalAngle").val());
@@ -225,6 +231,8 @@ function initFLFX() {
     $("#txt_flfx_Height").change(function () {
         var num = Number($(this).val());
         thisWidget.measureObj.height = num;
+
+        showFLFXHeightRg()
     });
     $("#txt_flfx_MaxHeight").change(function () {
         var num = Number($(this).val());
@@ -341,7 +349,7 @@ function initMXPQ() {
         thisWidget.clearMXPQ();
     });
 
-
+    
     $('#btn_mxpq_selectd').click(function () {
         thisWidget.selectedPQMX();
     });
@@ -362,7 +370,9 @@ function initMXPQ() {
             thisWidget.clipTileset.distance = value;
     });
 
-
+    $("#btn_mxpq_DrawLine").click(function () {
+        thisWidget.drawLinePQMX();
+    });
 
 
     $("#btn_mxpq_Clipping1").click(function () {

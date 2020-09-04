@@ -34,7 +34,7 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
         this.clearDraw();
     },
     drawPolyline: function (options) {
-        this.measureControl.measuerLength(options);
+        this.measureControl.measureLength(options);
     },
     drawPolygon: function (options) {
         this.measureControl.measureArea(options);

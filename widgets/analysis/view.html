@@ -166,10 +166,19 @@
             <div class="rowview clearfix">
                 <span>视角距离:</span>
 
-                <input id="range_ksy_distance" title="距离（米）" type="range" min="1" max="1000" step="1" value="100">
+                <input id="range_ksy_distance" title="距离（米）" type="range" min="1" max="5000" step="1" value="100">
                 <input id="txt_ksy_distance" min="1" max="5000" value="100" type="number" class="form-control" />
             </div>
 
+            <div class="rowview clearfix">
+                <span>视椎框线:</span>
+
+                <div class="checkbox checkbox-info checkbox-inline">
+                    <input type="checkbox" id="chk_ksy_DebugFrustum" value="this" name="jiaodu" checked>
+                    <label for="chk_ksy_DebugFrustum">显示框线</label>
+                </div>
+            </div>
+ 
             <div class="rowview clearfix center">
                 <input id="btn_ksy_add" type="button" class="btn btn-primary" value="添加可视域" />
             </div>
@@ -189,8 +198,10 @@
                 <span>清除</span>
             </div>
         </div>
-        <div class="mainInfo">
-            <div class="rowview clearfix tip">
+        <div class="mainInfo" title="提示：对绘制面(墙)内的进行以下计算。
+1. 挖方量: 计算“基准面”与“墙顶部”之间的凸出部分进行挖掉的体积。
+2. 填方量：计算“基准面”与“墙底部”之间的缺少部分进行填平的体积。">
+            <div class="rowview clearfix tip" >
                 提示:请首先单击 “绘制区域” 按钮，再在图上绘制分析区域。
             </div>
 
@@ -203,8 +214,8 @@
             </div>
             <div class="rowview clearfix">
                 <span>基准面高:</span>
-                <input id="txt_flfx_Height" type="number" value="0" step="0.1" class="form-control" style="width: 100px;"
-                    title="计量单位:米" />
+                <input id="txt_flfx_Height" type="number" value="0" step="0.1" class="form-control"
+                    style="width: 100px;" title="计量单位:米" />
                 <input id='btn_flfx_selHeight' type="button" class="btn btn-primary" value="点选高度" />
             </div>
 
@@ -212,13 +223,13 @@
                 <span>围墙底高:</span>
                 <input id="txt_flfx_MinHeight" type="number" value="0" step="0.1" class="form-control"
                     style="width: 100px;" title="计量单位:米" />
-                    （可选）
+                （可选）
             </div>
             <div class="rowview clearfix">
                 <span>围墙顶高:</span>
                 <input id="txt_flfx_MaxHeight" type="number" value="0" step="0.1" class="form-control"
                     style="width: 100px;" title="计量单位:米" />
-                    （可选）
+                （可选）
             </div>
         </div>
 
@@ -349,6 +360,10 @@
                 提示:请先图上点选模型后，设置剖切方向及距离。
             </div>
             <div class="rowview clearfix">
+                <span>按线剖切:</span>
+                <input type="button" class="btn btn-primary" value="绘制线" id="btn_mxpq_DrawLine" />
+            </div>
+            <div class="rowview clearfix">
                 <span>选择模型:</span>
                 <button type="button" id="btn_mxpq_selectd" class="btn btn-primary">图上点选</button>
                 <span id="lbl_mxpq_mxmc">未选择</span>
@@ -375,6 +390,9 @@
                 <input id="txt_mxpq_Distance" value="0" type="number" class="form-control" />
 
             </div>
+
+
+
         </div>
     </div>
 
