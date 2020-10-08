@@ -101,7 +101,7 @@ function initRZFX() {
 
 }
 function setRZFXNowTime(date) {
-    $("#lbl_rzfx_nowTime").html(date.format("MM月dd日 hh:mm"));
+    $("#lbl_rzfx_nowTime").html(date.format("MM月dd日 HH:mm:ss"));
 }
 
 //=============坡度坡向=============
@@ -118,7 +118,7 @@ function initPDPX() {
         thisWidget.clearPDPX();
     });
 
-    $('#btn_pdpx_drawLine').click(function () { 
+    $('#btn_pdpx_drawLine').click(function () {
         var splitNum = Number($("#txt_pdpx_SplitNum").val());
         thisWidget.drawPDPXLine(splitNum);
     });
@@ -183,9 +183,9 @@ function initKSY() {
         thisWidget.getLastKSY().distance = value;
     });
 
-    
+
     $("#chk_ksy_DebugFrustum").change(function () {
-        var debugFrustum = $(this).is(':checked'); 
+        var debugFrustum = $(this).is(':checked');
         thisWidget.updateKsyDebugFrustum(debugFrustum);
     });
 
@@ -221,7 +221,7 @@ function initFLFX() {
         $("#txt_flfx_Height").val(0);
         $("#txt_flfx_MaxHeight").val(0);
         $("#txt_flfx_MinHeight").val(0);
-        
+
         thisWidget.clearFLFX();
     });
 
@@ -236,32 +236,43 @@ function initFLFX() {
     });
     $("#txt_flfx_MaxHeight").change(function () {
         var num = Number($(this).val());
-        if(num<thisWidget.measureObj.height){
-            haoutil.msg("墙顶部高度不能低于基准面高"); 
+
+        var maxHeight = getFixedNum(thisWidget.measureObj.squareResult.maxHeight)
+        if (num < maxHeight) {
+            haoutil.msg("墙顶部高度不能低于区域内的地表高" + maxHeight);
+
+            $(this).val(maxHeight);
+            thisWidget.measureObj.maxHeight = Number(maxHeight);
+            return
+        }
+        if (num < thisWidget.measureObj.height) {
+            haoutil.msg("墙顶部高度不能低于基准面高" + thisWidget.measureObj.height);
             return
         }
         thisWidget.measureObj.maxHeight = num;
     });
     $("#txt_flfx_MinHeight").change(function () {
         var num = Number($(this).val());
-        if(num>thisWidget.measureObj.height){
-            haoutil.msg("墙底部高度不能高于基准面高"); 
+        if (num > thisWidget.measureObj.height) {
+            haoutil.msg("墙底部高度不能高于基准面高" + thisWidget.measureObj.height);
             return
         }
         thisWidget.measureObj.minHeight = num;
-    }); 
+    });
     $("#btn_flfx_selHeight").click(function () {
         thisWidget.measureObj.selecteHeight(showFLFXHeightRg);
     });
 
 }
 
-function showFLFXHeightRg() { 
-    $("#txt_flfx_Height").val(thisWidget.measureObj.height.toFixed(1)); 
-    $("#txt_flfx_MaxHeight").val(thisWidget.measureObj.maxHeight.toFixed(1));
+function showFLFXHeightRg() {
+    $("#txt_flfx_Height").val(thisWidget.measureObj.height.toFixed(1));
+    $("#txt_flfx_MaxHeight").val( getFixedNum(thisWidget.measureObj.maxHeight));
     $("#txt_flfx_MinHeight").val(thisWidget.measureObj.minHeight.toFixed(1));
 }
-
+function getFixedNum(val) {
+    return Math.ceil(val * 10) / 10
+}
 
 //=============地形开挖=============
 function initDXKW() {
@@ -282,7 +293,7 @@ function initDXKW() {
     $('#bt_dxkw_draw_extent').click(function () {
         thisWidget.startDrawDXKWExtent();
     });
-    
+
 
     $("#txt_dxkw_clipHeight").change(function () {
         var nowValue = $(this).val();
@@ -349,7 +360,7 @@ function initMXPQ() {
         thisWidget.clearMXPQ();
     });
 
-    
+
     $('#btn_mxpq_selectd').click(function () {
         thisWidget.selectedPQMX();
     });

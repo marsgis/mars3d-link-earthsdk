@@ -25,7 +25,7 @@
     <meta name="msapplication-TileColor" content="#62a8ea">
 
     <!-- 第3方lib引入 -->
-    <script type="text/javascript" src="../../lib/include-lib.js?time=20200510" libpath="../../lib/"
+    <script type="text/javascript" src="../../lib/include-lib.js?time=20201005" libpath="../../lib/"
         include="jquery,jquery.range,jedate,font-awesome,bootstrap,bootstrap-checkbox,haoutil,admui-frame"></script>
 
     <link href="../../css/widget-win.css" rel="stylesheet" />
@@ -199,8 +199,8 @@
             </div>
         </div>
         <div class="mainInfo" title="提示：对绘制面(墙)内的进行以下计算。
-1. 挖方量: 计算“基准面”与“墙顶部”之间的凸出部分进行挖掉的体积。
-2. 填方量：计算“基准面”与“墙底部”之间的缺少部分进行填平的体积。">
+        1. 挖方量: 计算“基准面”到地表之间的凸出部分进行挖掉的体积。
+        2. 填方量：计算“基准面”与“墙底部”之间的缺少部分进行填平的体积。">
             <div class="rowview clearfix tip" >
                 提示:请首先单击 “绘制区域” 按钮，再在图上绘制分析区域。
             </div>
@@ -225,7 +225,7 @@
                     style="width: 100px;" title="计量单位:米" />
                 （可选）
             </div>
-            <div class="rowview clearfix">
+            <div class="rowview clearfix" title="围墙顶高只是展示效果，与计算结果无关。">
                 <span>围墙顶高:</span>
                 <input id="txt_flfx_MaxHeight" type="number" value="0" step="0.1" class="form-control"
                     style="width: 100px;" title="计量单位:米" />
@@ -475,7 +475,7 @@
         </div>
     </div>
     <!--页面js-->
-    <script src="view.js?time=20200510"></script>
+    <script src="view.js?time=20201005"></script>
 </body>
 
 </html>

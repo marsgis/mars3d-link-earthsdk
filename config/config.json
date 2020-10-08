@@ -8,6 +8,8 @@
         "infoBox": false,
         "vrButton": true,
         "fullscreenButton": true,
+        "animation": false,        
+        "timeline": false,        
         "geocoder": false,
         "showRenderLoopErrors": true,
         "center": { "y": 31.686288, "x": 117.229619, "z": 11333.9, "heading": 359.2, "pitch": -39.5, "roll": 360 },
@@ -18,7 +20,7 @@
         "mouseZoom": true,
         "location": {
             "fps":true,
-            "format":"<div>经度:{x}</div> <div>纬度:{y}</div> <div>海拔：{z}米</div> <div>方向：{heading}度</div> <div>俯仰角：{pitch}度</div>  <div>视高：{height}米</div>",
+            "format":"<div>经度:{x}</div> <div>纬度:{y}</div> <div>海拔：{z}米</div> <div>层级：{level}</div> <div>方向：{heading}度</div> <div>俯仰角：{pitch}度</div> <div>视高：{height}米</div>",          
             "crs":""
         },
         "navigation": {
@@ -136,6 +138,7 @@
         ],
         "operationallayers": [
             {
+                "pid": 10,
                 "name": "行政区划界线",
                 "type": "xyz", 
                 "url": "https://t{s}.tianditu.gov.cn/DataServer?T=ibo_w&x={x}&y={y}&l={z}&tk=56b81006f361f6406d0e940d2f89a39c",
@@ -925,12 +928,33 @@
                 "type": "group"
             },
             {
+                "pid": 2040,
+                "type": "3dtiles",
+                "name": "成都市(偏移)",
+                "url":  "$serverURL$/3dtiles/jzw-chengdu-gcj/tileset.json", 
+                "marsJzwStyle": true,   
+                "style": {
+                    "color": {
+                        "conditions": [
+                            ["true", "rgb(255, 255, 255)"]
+                        ]
+                    }
+                },
+                "center": { "y": 30.630359, "x": 104.065939, "z": 2964.05, "heading": 3.2, "pitch": -36.4, "roll": 0 },
+                "showClickFeature": true, 
+                "popup": [
+                    { "field": "objectid", "name": "编号" },
+                    { "field": "height", "name": "楼高", "unit": "米" },
+                    { "field": "xzqh_name", "name": "辖区" }
+                ]
+            },
+            {
                 "id": 204011,
                 "pid": 2040,
                 "type": "3dtiles",
                 "name": "合肥市区",
                 "url": "$serverURL$/3dtiles/jzw-hefei/tileset.json", 
-                "maximumScreenSpaceError": 3,
+                "marsJzwStyle": true,   
                 "maximumMemoryUsage": 1024,
                 "center": {
                     "y": 31.805004,
@@ -990,7 +1014,7 @@
                 "maximumMemoryUsage": 8192,
                 "dynamicScreenSpaceError": true,
                 "cullWithChildrenBounds": false,
-                "luminanceAtZenith": 0.6, 
+                
                 "scenetree": "scenetree.json",
                 "offset":{"x":117.096906,"y":31.851564,"z":45,"heading":342.5},
                 "center":{"y":31.849357,"x":117.099194,"z":306.2,"heading":327.1,"pitch":-30.9,"roll":359.9},
@@ -1001,9 +1025,28 @@
                 "popup":"all"
             },
             {
+                "pid": 2060,
+                "name":"教学楼",
+                "type":"3dtiles", 
+                "url": "$serverURL$/3dtiles/bim-daxue/tileset.json",
+                "offset": {
+                    "x": 117.251229,
+                    "y": 31.844015,
+                    "z": 36.2,
+                    "transform": true
+                },
+                "center":{ "y": 31.842655, "x": 117.251587, "z": 304.57, "heading": 358, "pitch": -59, "roll": 360 },
+                "scenetree": "scenetree.json",
+                "showClickFeature":true,
+                "pickFeatureStyle": {
+                    "color":"#00FF00"
+                },
+                "popup":"all"
+            },
+            {
                 "id": 206011, 
                 "pid": 2060,
-                "name": "教学楼",
+                "name": "大楼",
                 "type": "group"
             },
             {
@@ -1125,7 +1168,7 @@
                 "maximumMemoryUsage": 8192,
                 "dynamicScreenSpaceError": true,
                 "cullWithChildrenBounds": false,
-                "luminanceAtZenith": 0.6, 
+                
                 "offset": { "z": 3 },
                 "center": {"y":28.440864,"x":119.486477,"z":588.23,"heading":268.6,"pitch":-37.8,"roll":359.8}
             }, 
@@ -1159,10 +1202,11 @@
                 "name": "文庙",
                 "url": "$serverURL$/3dtiles/qx-simiao/tileset.json",
 		        "maximumScreenSpaceError": 2,
-                "maximumMemoryUsage": 8192,
+                "maximumMemoryUsage": 2048,
                 "dynamicScreenSpaceError": true,
-                "cullWithChildrenBounds": false,
-                "luminanceAtZenith": 0.6, 
+                "cullWithChildrenBounds": false,                
+                "skipLevelOfDetail":true,
+                "preferLeaves":true,          
                 "offset": { "z": 81.5 } ,
                 "center":{"y":33.589536,"x":119.032216,"z":145.08,"heading":3.1,"pitch":-22.9,"roll":0}
             },
@@ -1173,6 +1217,10 @@
                 "url": "$serverURL$/3dtiles/qx-shuiwu/tileset.json", 
                 "maximumScreenSpaceError": 1,
                 "maximumMemoryUsage": 1024,
+                "dynamicScreenSpaceError": true,
+                "cullWithChildrenBounds": false,                
+                "skipLevelOfDetail":true,
+                "preferLeaves":true,
                 "offset": { "z": -100 },
                 "center": {
                     "y": 36.534035,
@@ -1190,10 +1238,9 @@
                 "name": "厂房",
                 "url": "$serverURL$/3dtiles/qx-changfang/tileset.json",
 		        "maximumScreenSpaceError": 1,
-                "maximumMemoryUsage": 8192,
+                "maximumMemoryUsage": 1024,
                 "dynamicScreenSpaceError": true,
-                "cullWithChildrenBounds": false,
-                "luminanceAtZenith": 0.6, 
+                "cullWithChildrenBounds": false,                
                 "skipLevelOfDetail":true,
                 "preferLeaves":true,
                 "offset": { "z": -4 },
