@@ -1,6 +1,4 @@
 ﻿{
-    "serverURL": "http://data.marsgis.cn",
-
     "map3d": {
         "homeButton": true,
         "sceneModePicker": true,
@@ -17,18 +15,12 @@
         "maxzoom": 50000000,
         "style": { "atmosphere": true, "lighting": false, "fog": false, "testTerrain": false },     
         "contextmenu":true,  
-        "mouseZoom": true,
         "location": {
             "fps":true,
-            "format":"<div>经度:{x}</div> <div>纬度:{y}</div> <div>海拔：{z}米</div> <div>层级：{level}</div> <div>方向：{heading}度</div> <div>俯仰角：{pitch}度</div> <div>视高：{height}米</div>",          
-            "crs":""
-        },
-        "navigation": {
-          "legend": { "left": "100px", "bottom": "-1px" },
-          "compass": { "bottom": "240px", "right": "2px" }
+            "format":"<div>经度:{x}</div> <div>纬度:{y}</div> <div>海拔：{z}米</div> <div>层级：{level}</div> <div>方向：{heading}度</div> <div>俯仰角：{pitch}度</div> <div>视高：{height}米</div>"          
         },
         "terrain": {
-            "url": "$serverURL$/terrain", 
+            "url": "http://data.marsgis.cn/terrain", 
             "visible": true
         },
         "basemaps": [
@@ -67,13 +59,7 @@
                 "icon": "img/basemaps/tdt_img.png",
                 "type": "www_tdt",
                 "layer": "img_d",
-                "key": [
-                  "313cd4b28ed520472e8b43de00b2de56",
-                  "83b36ded6b43b9bc81fbf617c40b83b5",
-                  "0ebd57f93a114d146a954da4ecae1e67",
-                  "6c99c7793f41fccc4bd595b03711913e",
-                  "56b81006f361f6406d0e940d2f89a39c"
-                ]
+                "key": [ "9ae78c51a0a28f06444d541148496e36"  ]
             },
             {
                 "pid": 10,
@@ -81,8 +67,8 @@
                 "icon": "img/basemaps/tdt_vec.png",
                 "type": "group",
                 "layers": [
-                    { "name": "底图", "type": "www_tdt", "layer": "vec_d", "key": ["313cd4b28ed520472e8b43de00b2de56" ] },
-                    { "name": "注记", "type": "www_tdt", "layer": "vec_z", "key": [  "83b36ded6b43b9bc81fbf617c40b83b5" ] }
+                    { "name": "底图", "type": "www_tdt", "layer": "vec_d", "key": ["9ae78c51a0a28f06444d541148496e36" ] },
+                    { "name": "注记", "type": "www_tdt", "layer": "vec_z", "key": ["9ae78c51a0a28f06444d541148496e36" ] }
                 ]               
             }, 
             {
@@ -141,7 +127,7 @@
                 "pid": 10,
                 "name": "行政区划界线",
                 "type": "xyz", 
-                "url": "https://t{s}.tianditu.gov.cn/DataServer?T=ibo_w&x={x}&y={y}&l={z}&tk=56b81006f361f6406d0e940d2f89a39c",
+                "url": "https://t{s}.tianditu.gov.cn/DataServer?T=ibo_w&x={x}&y={y}&l={z}&tk=9ae78c51a0a28f06444d541148496e36",
                 "subdomains": "01234567",
                 "maximumLevel": 10,
                 "visible": true
@@ -151,14 +137,7 @@
                 "name": "天地图注记",
                 "type": "www_tdt",
                 "layer": "img_z",
-                "key": [
-                  "313cd4b28ed520472e8b43de00b2de56",
-                  "83b36ded6b43b9bc81fbf617c40b83b5",
-                  "0ebd57f93a114d146a954da4ecae1e67",
-                  "6c99c7793f41fccc4bd595b03711913e",
-                  "56b81006f361f6406d0e940d2f89a39c"
-                ],
-                "proxy": "http://data.marsgis.cn/proxy/",
+                "key": ["9ae78c51a0a28f06444d541148496e36"],
                 "visible": false
             },
             {
@@ -405,7 +384,7 @@
                 "pid": 3040,
                 "type": "geojson-draw",
                 "name": "规划单元",
-                "url": "$serverURL$/file/geojson/draw-cady.json", 
+                "url": "http://data.marsgis.cn/file/geojson/draw-cady.json", 
                 "visible": false,
                 "flyTo": true
             }, 
@@ -414,7 +393,7 @@
                 "pid": 3040,
                 "type": "geojson-draw",
                 "name": "示例数据",
-                "url": "$serverURL$/file/geojson/draw-demo.json",
+                "url": "http://data.marsgis.cn/file/geojson/draw-demo.json",
                 "popup": "{draw_typename}", 
                 "visible": false,
                 "flyTo": true
@@ -429,7 +408,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "用地规划",
-                "url": "$serverURL$/file/geojson/guihua.json",
+                "url": "http://data.marsgis.cn/file/geojson/guihua.json",
                 "symbol": {
                     "styleOptions": {
                         "opacity": 0.6,
@@ -473,7 +452,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "建筑物面",
-                "url": "$serverURL$/file/geojson/jzw.json",
+                "url": "http://data.marsgis.cn/file/geojson/jzw.json",
                 "symbol": {
                     "styleOptions": {
                         "color": "#0d3685",
@@ -492,7 +471,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "安徽各市",
-                "url": "$serverURL$/file/geojson/anhui.json",
+                "url": "http://data.marsgis.cn/file/geojson/anhui.json",
                 "symbol": {
                     "styleOptions": {
                         "fill": true,
@@ -529,7 +508,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "省界线",
-                "url": "$serverURL$/file/geojson/sheng-line.json",
+                "url": "http://data.marsgis.cn/file/geojson/sheng-line.json",
                 "symbol": {
                     "styleOptions": {
                         "lineType": "solid",
@@ -561,7 +540,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "西藏垭口",
-                "url": "$serverURL$/file/geojson/xizangyakou.json",
+                "url": "http://data.marsgis.cn/file/geojson/xizangyakou.json",
                 "symbol": {
                     "styleOptions": {
                         "image": "img/marker/mark1.png",
@@ -597,7 +576,7 @@
                     },
                     {
                         "type": "details",
-                        "calback": "showdetails",
+                        "callback": "showdetails",
                         "field": "图片"
                     }
                 ],
@@ -608,7 +587,7 @@
                 "pid": 3030,
                 "type": "geojson",
                 "name": "体育设施点",
-                "url": "$serverURL$/file/geojson/hfty-point.json",
+                "url": "http://data.marsgis.cn/file/geojson/hfty-point.json",
                 "symbol": {
                     "styleOptions": {
                         "image": "img/marker/mark1.png",
@@ -829,7 +808,7 @@
                 "pid": 3060,
                 "type": "czml",
                 "name": "汽车",
-                "url": "$serverURL$/file/czml/car.czml", 
+                "url": "http://data.marsgis.cn/file/czml/car.czml", 
                 "flyTo": true
             }, 
             {
@@ -837,7 +816,7 @@
                 "pid": 3060,
                 "type": "czml",
                 "name": "飞行编队",
-                "url": "$serverURL$/file/czml/flight.czml",
+                "url": "http://data.marsgis.cn/file/czml/flight.czml",
                 "popup": "all",
                 "flyTo": true
             },
@@ -846,7 +825,7 @@
                 "pid": 3060,
                 "type": "czml",
                 "name": "船舶编队",
-                "url": "$serverURL$/file/czml/ship.czml",
+                "url": "http://data.marsgis.cn/file/czml/ship.czml",
                 "popup": "all",
                 "flyTo": true
             },
@@ -860,14 +839,14 @@
                 "pid": 3050,
                 "type": "kml", 
                 "name": "海上安全警告",
-                "url": "$serverURL$/file/kml/NAVWARN.kmz",
+                "url": "http://data.marsgis.cn/file/kml/NAVWARN.kmz",
                 "popup": "all"
             },
             {
                 "pid": 3050,
                 "type": "kml", 
                 "name": "国境线",
-                "url": "$serverURL$/file/kml/countryboundary.kml",
+                "url": "http://data.marsgis.cn/file/kml/countryboundary.kml",
                 "symbol": {
                     "styleOptions": {
                         "color": "#FED976",
@@ -879,7 +858,7 @@
                 "pid": 3050,
                 "type": "kml", 
                 "name": "省界线",
-                "url": "$serverURL$/file/kml/province.kml",
+                "url": "http://data.marsgis.cn/file/kml/province.kml",
                 "symbol": {
                     "styleOptions": {
                         "color": "#00FF00",
@@ -906,7 +885,7 @@
                 "pid": 2010,
                 "type": "gltf",
                 "name": "风力发电机",
-                "url": "$serverURL$/gltf/mars/fengche.gltf",
+                "url": "http://data.marsgis.cn/gltf/mars/fengche.gltf",
                 "position": { "x":  117.219071,"y": 31.828783, "z": 39.87},
                 "style":{   "scale": 50,  "heading": -93  },
                 "popup": "示例信息，这是一个风力发电机",
@@ -916,7 +895,7 @@
                 "pid": 2010,
                 "type": "gltf",
                 "name": "起重车",
-                "url": "$serverURL$/gltf/mars/qzcar/GKZY_anim.gltf",                
+                "url": "http://data.marsgis.cn/gltf/mars/qzcar/GKZY_anim.gltf",                
                 "position": { "x": 117.217458,"y":31.815349, "z": 35.03},
                 "style":{"scale": 2,   "heading": -95, "clampToGround": true} ,
                 "center":{"y":31.815363,"x":117.215958,"z":107.35,"heading":90.7,"pitch":-26.1,"roll":0.2}
@@ -931,7 +910,7 @@
                 "pid": 2040,
                 "type": "3dtiles",
                 "name": "成都市(偏移)",
-                "url":  "$serverURL$/3dtiles/jzw-chengdu-gcj/tileset.json", 
+                "url":  "http://data.marsgis.cn/3dtiles/jzw-chengdu-gcj/tileset.json", 
                 "marsJzwStyle": true,   
                 "style": {
                     "color": {
@@ -953,7 +932,7 @@
                 "pid": 2040,
                 "type": "3dtiles",
                 "name": "合肥市区",
-                "url": "$serverURL$/3dtiles/jzw-hefei/tileset.json", 
+                "url": "http://data.marsgis.cn/3dtiles/jzw-hefei/tileset.json", 
                 "marsJzwStyle": true,   
                 "maximumMemoryUsage": 1024,
                 "center": {
@@ -975,7 +954,7 @@
                 "pid": 2040,
                 "type": "3dtiles",
                 "name": "上海市区",
-                "url": "$serverURL$/3dtiles/jzw-shanghai/tileset.json",
+                "url": "http://data.marsgis.cn/3dtiles/jzw-shanghai/tileset.json",
                 "maximumScreenSpaceError": 3,
                 "maximumMemoryUsage": 1024,
                 "style":{
@@ -1005,30 +984,10 @@
                 "type": "group"
             },
             {
-                "id": 206012, 
                 "pid": 2060,
-                "type": "3dtiles",
-                "name": "桥梁",
-                "url": "$serverURL$/3dtiles/bim-qiaoliang/tileset.json",
-		        "maximumScreenSpaceError": 16,
-                "maximumMemoryUsage": 8192,
-                "dynamicScreenSpaceError": true,
-                "cullWithChildrenBounds": false,
-                
-                "scenetree": "scenetree.json",
-                "offset":{"x":117.096906,"y":31.851564,"z":45,"heading":342.5},
-                "center":{"y":31.849357,"x":117.099194,"z":306.2,"heading":327.1,"pitch":-30.9,"roll":359.9},
-                "showClickFeature":true,
-                "pickFeatureStyle": {
-                    "color":"#00FF00"
-                },
-                "popup":"all"
-            },
-            {
-                "pid": 2060,
-                "name":"教学楼",
+                "name":"大学办公楼",
                 "type":"3dtiles", 
-                "url": "$serverURL$/3dtiles/bim-daxue/tileset.json",
+                "url": "http://data.marsgis.cn/3dtiles/bim-daxue/tileset.json",
                 "offset": {
                     "x": 117.251229,
                     "y": 31.844015,
@@ -1042,43 +1001,27 @@
                     "color":"#00FF00"
                 },
                 "popup":"all"
-            },
+            }, 
             {
-                "id": 206011, 
+                "id": 206012, 
                 "pid": 2060,
-                "name": "大楼",
-                "type": "group"
-            },
-            {
-                "id": 20601121, 
-                "pid": 206011,
-                "name":"建筑",
-                "type":"3dtiles",
-                "url":"$serverURL$/3dtiles/bim-xuexiao/jz/tileset.json",
-                "maximumScreenSpaceError": 16, 
-                "maximumMemoryUsage": 1024,
-                "scenetree": "scenetree.json",   
-                "showClickFeature":true, 
-                "popup":"all",          
-                "offset":{"x":117.21964,"y":31.833288,"z":53},
-                "rotation": { "z": 1.9},
-                "center":{"y":31.832145,"x":117.219726,"z":197.57,"heading":358.9,"pitch":-46.3,"roll":360}
-            },
-            {
-                "pid": 206011,
-                "name":"机电",
-                "type":"3dtiles",
-                "url":"$serverURL$/3dtiles/bim-xuexiao/jd/tileset.json",
-                "maximumScreenSpaceError": 16, 
-                "maximumMemoryUsage": 1024,
-                "scenetree": "scenetree.json",   
-                "showClickFeature":true, 
-                "popup":"all",          
-                "offset":{"x":117.21964,"y":31.833288,"z":53},
-                "rotation": { "z": 1.9},
-                "center":{"y":31.832145,"x":117.219726,"z":197.57,"heading":358.9,"pitch":-46.3,"roll":360}
-            },
-     
+                "type": "3dtiles",
+                "name": "桥梁",
+                "url": "http://data.marsgis.cn/3dtiles/bim-qiaoliang/tileset.json",
+		        "maximumScreenSpaceError": 16,
+                "maximumMemoryUsage": 8192,
+                "dynamicScreenSpaceError": true,
+                "cullWithChildrenBounds": false,
+                "luminanceAtZenith": 0.6, 
+                "scenetree": "scenetree.json",
+                "offset":{"x":117.096906,"y":31.851564,"z":45,"heading":342.5},
+                "center":{"y":31.849357,"x":117.099194,"z":306.2,"heading":327.1,"pitch":-30.9,"roll":359.9},
+                "showClickFeature":true,
+                "pickFeatureStyle": {
+                    "color":"#00FF00"
+                },
+                "popup":"all"
+            }, 
          
             {
                 "id": 2020,
@@ -1091,7 +1034,7 @@
                 "pid": 2020,
                 "type": "3dtiles",
                 "name": "地下管网", 
-                "url": "$serverURL$/3dtiles/max-piping-hf/tileset.json",
+                "url": "http://data.marsgis.cn/3dtiles/max-piping-hf/tileset.json",
                 "maximumScreenSpaceError": 2,
                 "maximumMemoryUsage": 1024,
                 "offset": { "x": 117.215457, "y": 31.843363, "z": 5, "transform": true},
@@ -1100,13 +1043,13 @@
                 "showClickFeature": true,
                 "popup": "all",
                 "msg": "演示数据，地下数据拖动时会在地面漂移"
-            },
+            },          
             {
                 "id": 202012,
                 "pid": 2020,
                 "type": "3dtiles", 
                 "name": "石化工厂",
-                "url": "$serverURL$/3dtiles/max-shihua/tileset.json",
+                "url": "http://data.marsgis.cn/3dtiles/max-shihua/tileset.json",
                 "maximumScreenSpaceError": 1, 
                 "offset": {
                     "x": 117.077158,
@@ -1135,7 +1078,7 @@
                 "pid": 202030,
                 "type": "gltf",
                 "name": "闸门",
-                "url": "$serverURL$/gltf/mars/zhamen.glb",
+                "url": "http://data.marsgis.cn/gltf/mars/zhamen.glb",
                 "position": { "x": 121.479807, "y": 29.791276, "z": 2.7}, 
                 "style":{ "heading": 104  },
                 "center": { "y": 29.791537, "x": 121.479881, "z": 11.1, "heading": 194.1, "pitch": -11, "roll": 360 }
@@ -1145,7 +1088,7 @@
                 "pid": 202030,
                 "type": "3dtiles",
                 "name": "整体",
-                "url": "$serverURL$/3dtiles/max-fsdzm/tileset.json",
+                "url": "http://data.marsgis.cn/3dtiles/max-fsdzm/tileset.json",
                 "maximumScreenSpaceError": 1,
                 "maximumMemoryUsage": 1024,
                 "offset": { "z": 3 },
@@ -1163,20 +1106,21 @@
                 "pid": 2030,
                 "type": "3dtiles",
                 "name": "县城社区",
-                "url": "$serverURL$/3dtiles/qx-shequ/tileset.json",
-		        "maximumScreenSpaceError": 2,
-                "maximumMemoryUsage": 8192,
+                "url": "http://data.marsgis.cn/3dtiles/qx-shequ/tileset.json",
+                "maximumScreenSpaceError": 2,
+                "maximumMemoryUsage": 2048,
                 "dynamicScreenSpaceError": true,
                 "cullWithChildrenBounds": false,
-                
                 "offset": { "z": 3 },
-                "center": {"y":28.440864,"x":119.486477,"z":588.23,"heading":268.6,"pitch":-37.8,"roll":359.8}
+                "center": {"y":28.440864,"x":119.486477,"z":588.23,"heading":268.6,"pitch":-37.8,"roll":359.8},    
+                "visible": false,
+                "flyTo": false
             }, 
             {
                 "pid": 2030,
                 "type": "geojson",
                 "name": "文庙-单体化",
-                "url": " $serverURL$/file/geojson/draw-dth-wm.json",
+                "url": " http://data.marsgis.cn/file/geojson/draw-dth-wm.json",
                 "symbol": {
                     "styleOptions": {
                         "clampToGround":true
@@ -1200,8 +1144,8 @@
                 "pid": 2030,
                 "type": "3dtiles",
                 "name": "文庙",
-                "url": "$serverURL$/3dtiles/qx-simiao/tileset.json",
-		        "maximumScreenSpaceError": 2,
+                "url": "http://data.marsgis.cn/3dtiles/qx-simiao/tileset.json",
+                "maximumScreenSpaceError": 2,
                 "maximumMemoryUsage": 2048,
                 "dynamicScreenSpaceError": true,
                 "cullWithChildrenBounds": false,                
@@ -1214,7 +1158,7 @@
                 "pid": 2030,
                 "type": "3dtiles",
                 "name": "几栋楼",
-                "url": "$serverURL$/3dtiles/qx-shuiwu/tileset.json", 
+                "url": "http://data.marsgis.cn/3dtiles/qx-shuiwu/tileset.json", 
                 "maximumScreenSpaceError": 1,
                 "maximumMemoryUsage": 1024,
                 "dynamicScreenSpaceError": true,
@@ -1236,7 +1180,7 @@
                 "pid": 2030,
                 "type": "3dtiles",
                 "name": "厂房",
-                "url": "$serverURL$/3dtiles/qx-changfang/tileset.json",
+                "url": "http://data.marsgis.cn/3dtiles/qx-changfang/tileset.json",
 		        "maximumScreenSpaceError": 1,
                 "maximumMemoryUsage": 1024,
                 "dynamicScreenSpaceError": true,

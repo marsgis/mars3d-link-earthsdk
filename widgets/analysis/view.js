@@ -185,8 +185,8 @@ function initKSY() {
 
 
     $("#chk_ksy_DebugFrustum").change(function () {
-        var debugFrustum = $(this).is(':checked');
-        thisWidget.updateKsyDebugFrustum(debugFrustum);
+        var show= $(this).is(':checked');
+        thisWidget.updateKsyDebugFrustum(show);
     });
 
     $('#btn_ksy_add').click(function () {
@@ -226,49 +226,49 @@ function initFLFX() {
     });
 
     $('#btn_flfx_draw').click(function () {
-        thisWidget.measureObj.startDraw();
+        thisWidget.measureVolume.startDraw();
     });
     $("#txt_flfx_Height").change(function () {
         var num = Number($(this).val());
-        thisWidget.measureObj.height = num;
+        thisWidget.measureVolume.height = num;
 
         showFLFXHeightRg()
     });
     $("#txt_flfx_MaxHeight").change(function () {
         var num = Number($(this).val());
 
-        var maxHeight = getFixedNum(thisWidget.measureObj.squareResult.maxHeight)
+        var maxHeight = getFixedNum(thisWidget.measureVolume.interPolygonObj.maxHeight) 
         if (num < maxHeight) {
             haoutil.msg("墙顶部高度不能低于区域内的地表高" + maxHeight);
 
             $(this).val(maxHeight);
-            thisWidget.measureObj.maxHeight = Number(maxHeight);
+            thisWidget.measureVolume.maxHeight = Number(maxHeight);
             return
         }
-        if (num < thisWidget.measureObj.height) {
-            haoutil.msg("墙顶部高度不能低于基准面高" + thisWidget.measureObj.height);
+        if (num < thisWidget.measureVolume.height) {
+            haoutil.msg("墙顶部高度不能低于基准面高" + thisWidget.measureVolume.height);
             return
         }
-        thisWidget.measureObj.maxHeight = num;
+        thisWidget.measureVolume.maxHeight = num;
     });
     $("#txt_flfx_MinHeight").change(function () {
         var num = Number($(this).val());
-        if (num > thisWidget.measureObj.height) {
-            haoutil.msg("墙底部高度不能高于基准面高" + thisWidget.measureObj.height);
+        if (num > thisWidget.measureVolume.height) {
+            haoutil.msg("墙底部高度不能高于基准面高" + thisWidget.measureVolume.height);
             return
         }
-        thisWidget.measureObj.minHeight = num;
+        thisWidget.measureVolume.minHeight = num;
     });
     $("#btn_flfx_selHeight").click(function () {
-        thisWidget.measureObj.selecteHeight(showFLFXHeightRg);
+        thisWidget.measureVolume.selecteHeight(showFLFXHeightRg);
     });
 
 }
 
 function showFLFXHeightRg() {
-    $("#txt_flfx_Height").val(thisWidget.measureObj.height.toFixed(1));
-    $("#txt_flfx_MaxHeight").val( getFixedNum(thisWidget.measureObj.maxHeight));
-    $("#txt_flfx_MinHeight").val(thisWidget.measureObj.minHeight.toFixed(1));
+    $("#txt_flfx_Height").val(thisWidget.measureVolume.height.toFixed(1));
+    $("#txt_flfx_MaxHeight").val( getFixedNum(thisWidget.measureVolume.maxHeight));
+    $("#txt_flfx_MinHeight").val(thisWidget.measureVolume.minHeight.toFixed(1));
 }
 function getFixedNum(val) {
     return Math.ceil(val * 10) / 10

@@ -144,48 +144,49 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
             horizontalAngle: options.horizontalAngle,
             verticalAngle: options.verticalAngle,
             distance: options.distance,
-            offsetHeight: 1.5, //增加人的升高
-            calback: function (distance) {
-                if (that.viewWindow)
-                    that.viewWindow.updateKsyDistance(distance);
-            }
+            offsetHeight: 1.5, //增加人的升高 
         });
+        thisViewField.on(mars3d.analysi.Slope.event.end, function (event) {
+            if (that.viewWindow)
+                that.viewWindow.updateKsyDistance(event.distance);
+        })
+
         this.lastViewField = thisViewField;
         this.arrKsyList.push(thisViewField);
     },
-    updateKsyDebugFrustum: function (debugFrustum) {
+    updateKsyDebugFrustum: function (show) {
         for (var i = 0, len = this.arrKsyList.length; i < len; i++) {
-            this.arrKsyList[i].debugFrustum = debugFrustum;
+            this.arrKsyList[i].showFrustum = show;
         }
     },
 
     //=========方量分析========
     createFLFX: function () {
-        if (this.measureObj) return;
+        if (this.measureVolume) return;
 
         var that = this;
-        this.measureObj = new mars3d.analysi.MeasureVolume(viewer, {
+        this.measureVolume = new mars3d.analysi.MeasureVolume({
+            viewer: this.viewer,
             heightLabel: true,
-            offsetLabel: false,
-            onStart: function () {
-                haoutil.loading.show({ type: "loader-bar" });
-            },
-            onStop: function () {
-                haoutil.loading.hide();
-                that.viewWindow.showFLFXHeightRg(that.measureObj);
-            }
         });
+        this.measureVolume.on(mars3d.analysi.MeasureVolume.event.start, function (e) {
+            haoutil.loading.show({ type: "loader-bar" });
+        })
+        this.measureVolume.on(mars3d.analysi.MeasureVolume.event.end, function (e) {
+            haoutil.loading.hide();
+            that.viewWindow.showFLFXHeightRg();
+        })
     },
     destroyFLFX: function () {
-        if (!this.measureObj) return;
+        if (!this.measureVolume) return;
 
-        this.measureObj.destroy();
-        delete this.measureObj;
+        this.measureVolume.destroy();
+        delete this.measureVolume;
     },
     clearFLFX: function () {
-        if (!this.measureObj) return;
+        if (!this.measureVolume) return;
 
-        this.measureObj.clear();
+        this.measureVolume.clear();
     },
 
     //=========地形开挖========
@@ -239,13 +240,13 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
         this.resetTerrainDepthTest();
     },
     clearDXKW: function () {
-        if (this.TerrainClip) {
-            this.TerrainClip.destroy();
-            delete this.TerrainClip;
+        if (this.terrainClip) {
+            this.terrainClip.destroy();
+            delete this.terrainClip;
         }
-        if (this.TerrainClipPlan) {
-            this.TerrainClipPlan.destroy();
-            delete this.TerrainClipPlan;
+        if (this.terrainClipPlan) {
+            this.terrainClipPlan.destroy();
+            delete this.terrainClipPlan;
         }
 
         //同时有模型时，清除模型裁剪
@@ -261,7 +262,8 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
 
         //cesium原生的clip组成的【因为转cesium原生接口的plan组成，存在问题：不稳定，时而不生效】
-        this.TerrainClipPlan = new mars3d.analysi.TerrainClipPlan(viewer, {
+        this.terrainClipPlan = new mars3d.analysi.TerrainClipPlan({
+            viewer: this.viewer,
             positions: positions,
             height: height,
             wall: true,
@@ -272,7 +274,8 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
         // marsgis扩展的地形开挖【存在问题：鼠标无法穿透地表，地下管网的popup无法展示】
         if (has2) {
-            this.TerrainClip = new mars3d.analysi.TerrainClip(viewer, {
+            this.terrainClip = new mars3d.analysi.TerrainClip({
+                viewer: this.viewer,
                 positions: positions,
                 height: height,
                 wall: false
@@ -281,15 +284,16 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
     },
     updateDXKWHeight: function (nowValue) {
-        if (this.TerrainClipPlan)
-            this.TerrainClipPlan.height = nowValue;
+        if (this.terrainClipPlan)
+            this.terrainClipPlan.height = nowValue;
     },
 
     //=========地表透明========
     createDBTM: function () {
         this.openTerrainDepthTest();
 
-        this.underObj = new mars3d.analysi.Underground(viewer, {
+        this.underObj = new mars3d.analysi.Underground({
+            viewer: this.viewer,
             alpha: 0.5,
             enable: false,
         });
@@ -386,7 +390,7 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
                     haoutil.msg("请单击选择模型");
                     return;
                 }
-                that.clipTileset = new mars3d.tiles.TilesClipPlan(tileset);
+                that.clipTileset = new mars3d.tiles.TilesClipPlan({ tileset: tileset });
 
                 var radius = tileset.boundingSphere.radius / 2;
                 that.viewWindow.setClipDistanceRange(radius, tileset.name);
@@ -420,7 +424,7 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
                         haoutil.msg("请单击选择模型");
                         return;
                     }
-                    that.clipTileset = new mars3d.tiles.TilesClipPlan(tileset);
+                    that.clipTileset = new mars3d.tiles.TilesClipPlan({ tileset: tileset });
                 }
 
                 that.clipTileset.clipByPoints(points);
@@ -529,7 +533,6 @@ mars3d.widget.bindClass(mars3d.widget.BaseWidget.extend({
 
 
         this.tilesetClip = new mars3d.tiles.TilesClipPlan({
-            // viewer: this.viewer,
             tileset: tileset,
             positions: positions,
             clipOutSide: clipOutSide
