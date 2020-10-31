@@ -33,9 +33,23 @@
                 "pid": 10,
                 "name": "谷歌卫星",
                 "icon": "img/basemaps/google_img.png",
-                "type": "www_google",
-                "crs": "wgs84",
-                "layer": "img_d",
+                "type": "group", 
+                "layers": [
+                    {        
+                        "name": "底图-补南北极空洞",                        
+                        "type": "xyz",
+                        "url": "http://data.marsgis.cn/maptile/google_earth/{z}/{x}/{y}.jpg",
+                        "crs": "4326", 
+                        "minimumLevel": 0, 
+                        "maximumLevel": 3
+                    }, 
+                    {
+                        "name": "谷歌卫星",                    
+                        "type": "www_google", 
+                        "layer": "img_d",
+                        "crs": "wgs84"
+                    }
+                ],
                 "visible": true
             },
             {
@@ -984,16 +998,24 @@
                 "type": "group"
             },
             {
+                "id": 20601121, 
                 "pid": 2060,
                 "name":"大学办公楼",
                 "type":"3dtiles", 
                 "url": "http://data.marsgis.cn/3dtiles/bim-daxue/tileset.json",
-                "offset": {
-                    "x": 117.251229,
-                    "y": 31.844015,
-                    "z": 36.2,
-                    "transform": true
-                },
+                
+		        "maximumScreenSpaceError": 16,
+                "maximumMemoryUsage": 1024,  
+                "skipLevelOfDetail": true, 
+                "loadSiblings": true,      
+                "cullRequestsWhileMoving": true,
+                "cullRequestsWhileMovingMultiplier": 10,
+                "preferLeaves": true,  
+                "progressiveResolutionHeightFraction": 0.5,  
+                "dynamicScreenSpaceError": true,        
+                "preloadWhenHidden": true,     
+
+                "offset": { "x": 117.251229,"y": 31.844015, "z": 36.2, "transform": true},
                 "center":{ "y": 31.842655, "x": 117.251587, "z": 304.57, "heading": 358, "pitch": -59, "roll": 360 },
                 "scenetree": "scenetree.json",
                 "showClickFeature":true,
@@ -1008,14 +1030,21 @@
                 "type": "3dtiles",
                 "name": "桥梁",
                 "url": "http://data.marsgis.cn/3dtiles/bim-qiaoliang/tileset.json",
+
 		        "maximumScreenSpaceError": 16,
-                "maximumMemoryUsage": 8192,
-                "dynamicScreenSpaceError": true,
-                "cullWithChildrenBounds": false,
-                "luminanceAtZenith": 0.6, 
-                "scenetree": "scenetree.json",
+                "maximumMemoryUsage": 1024,  
+                "skipLevelOfDetail": true, 
+                "loadSiblings": true,      
+                "cullRequestsWhileMoving": true,
+                "cullRequestsWhileMovingMultiplier": 10,
+                "preferLeaves": true,  
+                "progressiveResolutionHeightFraction": 0.5,  
+                "dynamicScreenSpaceError": true,        
+                "preloadWhenHidden": true,            
+              
                 "offset":{"x":117.096906,"y":31.851564,"z":45,"heading":342.5},
                 "center":{"y":31.849357,"x":117.099194,"z":306.2,"heading":327.1,"pitch":-30.9,"roll":359.9},
+                "scenetree": "scenetree.json",
                 "showClickFeature":true,
                 "pickFeatureStyle": {
                     "color":"#00FF00"
