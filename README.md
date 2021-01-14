@@ -5,7 +5,7 @@
   该项目运行后效果是的最简应用的创建三维地球项目模版。
    
 
-  其他技术栈，请参考 [Mars3D开源导航](https://github.com/marsgis/MarsGIS-for-Cesium)
+  其他技术栈，请参考 [Mars3D开源导航](https://github.com/marsgis/mars3d)
 
 
 ## earthSDK整理及修改说明
