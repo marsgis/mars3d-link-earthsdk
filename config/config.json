@@ -49,8 +49,7 @@
                         "layer": "img_d",
                         "crs": "wgs84"
                     }
-                ],
-                "visible": true
+                ]
             },
             {
                 "pid": 10,
@@ -58,7 +57,8 @@
                 "icon": "img/basemaps/esriWorldImagery.png",
                 "type": "arcgis",
                 "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
-                "enablePickFeatures": false
+                "enablePickFeatures": false,
+                "visible": true
             },
             {
                 "pid": 10,

@@ -59,7 +59,7 @@ function initMap() {
 
             //构造地球 
             // viewer = mars3d.createMap({
-            //     id: 'cesiumContainer',
+            //     id: 'mars3dContainer',
             //     data: data.map3d,
             //     serverURL: data.serverURL,
             //     //infoBox: false,     //是否显示点击要素之后显示的信息  【也可以在config.json中配置】  
@@ -67,7 +67,7 @@ function initMap() {
             // });
 
             //构造地球 ,earthSDK方式
-            earth = new XE.Earth('cesiumContainer');
+            earth = new XE.Earth('mars3dContainer');
 
             //修改导航球位置
             $(".compass").css({ bottom: "20px" })
