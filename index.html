@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="zh-cn">
+
 <head>
-    <title> earthSDK + Mars3D 创建地球</title>
+    <title> Mars3D最简项目模版 - EarthSDK版</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!-- 移动设备 viewport -->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
-    <meta name="author" content="火星科技 http://cesium.marsgis.cn ">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="author" content="火星科技 http://mars3d.cn ">
     <!-- 360浏览器默认使用Webkit内核 -->
     <meta name="renderer" content="webkit">
     <!-- Chrome浏览器添加桌面快捷方式（安卓） -->
@@ -23,22 +25,30 @@
     <meta name="msapplication-TileColor" content="#62a8ea">
 
  
- 
-    <!--第三方lib-->
-    <script type="text/javascript" src="lib/include-lib.js?time=20210105" libpath="lib/"
-            include="jquery,jquery.range,bootstrap,bootstrap-checkbox,font-awesome,web-icons,layer,haoutil,nprogress,toastr,admui,turf,mars3d"></script>
-    <link href="css/style.css?time=20210105" rel="stylesheet" /> 
+    <!--第三方lib，非必须-->
+    <link rel="stylesheet" href="http://mars3d.cn/lib/fonts/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="http://mars3d.cn/lib/hao/haoutil.js"></script>
 
+    <!--依赖包--> 
+    <link rel="stylesheet" href="http://mars3d.cn/lib/Cesium/Widgets/widgets.css">
+    <script type="text/javascript" src="http://mars3d.cn/lib/Cesium/Cesium.js"></script>
+    <script type="text/javascript" src="https://earthsdk.com/v/last/XbsjEarth/XbsjEarth.js"></script>
+    <script type="text/javascript" src="https://earthsdk.com/v/last/XbsjCesium/XbsjCesium.js"></script>  
+    <script type="text/javascript" src="http://mars3d.cn/lib/mars3d/plugins/compatible/cesium-version.js"></script>
+    <script type="text/javascript" src="http://mars3d.cn/lib/turf/turf.min.js"></script> 
+    
+    <!--mars3d-->
+    <link rel="stylesheet" href="http://mars3d.cn/lib/mars3d/mars3d.css">
+    <script type="text/javascript" src="http://mars3d.cn/lib/mars3d/mars3d.js"></script>
+
+    <link href="css/style.css" rel="stylesheet" />
 </head>
-<body class="dark">
-    <div id="centerDiv">
-        <div id="mars3dContainer" class="mars3d-container"></div>
-    </div>
 
-    <div id="mask" class="signmask" ></div>
+<body>
+    <div id="mars3dContainer" class="mars3d-container"></div>
 
-
-    <!--业务代码--> 
-    <script src="js/index.js?time=20210105"></script>
+    <!--业务代码-->
+    <script src="js/index.js"></script>
 </body>
+
 </html>
