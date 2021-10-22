@@ -1,11 +1,12 @@
-# Mars3D最简项目模版 - EarthSDK版
+<p align="center">
+<img src="https://mars3d.cn/logo.png" width="300px" />
+</p>
 
-<p>
+<p align="center">EarthSDK + Mars3D 平台结合应用的示例模板</p>
+
+<p align="center">
 <a target="_black" href="https://github.com/marsgis/mars3d">
 <img alt="GitHub stars" src="https://img.shields.io/github/stars/marsgis/mars3d?style=flat&logo=github">
-</a>
-<a target="_black" href="https://github.com/marsgis/mars3d">
-<img alt="GitHub forks" src="https://img.shields.io/github/forks/marsgis/mars3d?style=flat&logo=github">
 </a>
 <a target="_black" href="https://www.npmjs.com/package/mars3d">
 <img alt="Npm downloads" src="https://img.shields.io/npm/dt/mars3d?style=flat&logo=npm">
@@ -14,15 +15,13 @@
 <img alt="Npm version" src="https://img.shields.io/npm/v/mars3d.svg?style=flat&logo=npm&label=version"/>
 </a>
 </p>
+ 
 
   Mars3D支持结合`Cesium相关的各类平台`来兼容使用，方便结合不同平台的优点来达到完成各种项目需求。
    
   本仓库是Mars3D平台，在北京西部世界公司[EarthSDK平台](https://www.earthsdk.com)技术栈下的最简的应用项目模版。
   
-
- > 其他技术栈，请参考： [https://github.com/marsgis/mars3d](https://github.com/marsgis/mars3d)
-
-  
+ 
 
 ### EarthSDK整理及修改说明
 1. 在[EarthSDK官网](https://www.earthsdk.com)下载最新类库，将earthSDK的`XbsjCesium`和`XbsjEarth`等目录拷贝到 `lib\`目录下；当前示例中地址使用的是earthsdk官方js。
