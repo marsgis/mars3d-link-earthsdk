@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://mars3d.cn/logo.png" width="300px" />
+<img src="https://cdn.jsdelivr.net/gh/muyao1987/cdn/mars3d.cn/logo.png" width="300px" />
 </p>
  
 <p align="center">EarthSDK + Mars3D 结合使用的🌎最简项目示例</p>
