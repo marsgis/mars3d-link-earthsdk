@@ -37,12 +37,12 @@ function initMap(mapOptions) {
   graphicLayer.on(mars3d.EventType.click, function (event) {
     console.log("监听layer，单击了矢量对象", event);
   });
-//   graphicLayer.on(mars3d.EventType.mouseOver, function (event) {
-//     console.log("监听layer，鼠标移入了矢量对象", event);
-//   });
-//   graphicLayer.on(mars3d.EventType.mouseOut, function (event) {
-//     console.log("监听layer，鼠标移出了矢量对象", event);
-//   });
+  //   graphicLayer.on(mars3d.EventType.mouseOver, function (event) {
+  //     console.log("监听layer，鼠标移入了矢量对象", event);
+  //   });
+  //   graphicLayer.on(mars3d.EventType.mouseOut, function (event) {
+  //     console.log("监听layer，鼠标移出了矢量对象", event);
+  //   });
 
   //可在图层上绑定popup,对所有加到这个图层的矢量数据都生效
   graphicLayer.bindPopup(
@@ -85,7 +85,7 @@ function initMap(mapOptions) {
   addGraphic_e14(graphicLayer);
   addGraphic_e15(graphicLayer);
 }
- 
+
 
 function addGraphic_e01(graphicLayer) {
   let graphic = new mars3d.graphic.LabelEntity({
