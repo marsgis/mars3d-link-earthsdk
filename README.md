@@ -4,17 +4,22 @@
  
 <p align="center">EarthSDK + Mars3D 结合使用的🌎最简项目示例</p>
 
+
 <p align="center">
-<a target="_black" href="https://github.com/marsgis/mars3d">
-<img alt="GitHub stars" src="https://img.shields.io/github/stars/marsgis/mars3d?style=flat&logo=github">
-</a>
-<a target="_black" href="https://www.npmjs.com/package/mars3d">
-<img alt="Npm downloads" src="https://img.shields.io/npm/dt/mars3d?style=flat&logo=npm">
-</a>
-<a target="_black" href="https://www.npmjs.com/package/mars3d">
-<img alt="Npm version" src="https://img.shields.io/npm/v/mars3d.svg?style=flat&logo=npm&label=version"/>
-</a>
+  <a target="_black" href="https://www.npmjs.com/package/mars3d">
+    <img alt="Npm version" src="https://img.shields.io/npm/v/mars3d.svg?style=flat&logo=npm&label=版本号" />
+  </a>
+  <a target="_black" href="https://www.npmjs.com/package/mars3d">
+    <img alt="Npm downloads" src="https://img.shields.io/npm/dt/mars3d?style=flat&logo=npm&label=下载量" />
+  </a>
+  <a target="_black" href="https://github.com/marsgis/mars3d">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/marsgis/mars3d?style=flat&logo=github" />
+  </a>
+  <a target="_black" href="https://gitee.com/marsgis/mars3d">
+    <img src="https://gitee.com/marsgis/mars3d/badge/star.svg?theme=dark" alt="star" />
+  </a>
 </p>
+
  
 
   Mars3D支持结合`Cesium相关的各类平台`来兼容使用，方便结合不同平台的优点来达到完成各种项目需求。
