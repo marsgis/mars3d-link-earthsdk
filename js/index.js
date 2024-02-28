@@ -9,7 +9,7 @@ if (!mars3d.Util.webglreport()) {
 XE.ready().then(function () {
   //读取 config.json 配置文件
   var configUrl = "config/config.json";
-  mars3d.Resource.fetchJson({ url: configUrl })
+  mars3d.Util.fetchJson({ url: configUrl })
     .then((data) => {
       initMap(data.map3d); //构建地图
     })
